@@ -21,6 +21,9 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 private:
+	UPROPERTY(EditAnywhere, Category = "Movement")
+	float Speed = 400.f;
+
 	UPROPERTY(VisibleAnywhere, Category = "Camera Components")
 	class USpringArmComponent* SpringArmComp;
 	
