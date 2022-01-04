@@ -18,37 +18,38 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float Speed = 400.f;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
-	int32 VisibleAnywhereInt = 22;
+	//UPROPERTY(VisibleInstanceOnly)
+	//int32 VisibleInstanceOnlyInt = 12;
 
-	UPROPERTY(EditAnywhere, BluePrintReadOnly)
-	int32 EditAnywhereInt = 11;
+	//UPROPERTY(VisibleDefaultsOnly)
+	//int32 VisibleDefaultsOnlyInt = 5;
 
-	UPROPERTY(VisibleInstanceOnly)
-	int32 VisibleInstanceOnlyInt = 12;
+	//UPROPERTY(EditDefaultsOnly)
+	//int32 EditDefaultsOnlyInt = 9;
 
-	UPROPERTY(VisibleDefaultsOnly)
-	int32 VisibleDefaultsOnlyInt = 5;
-
-	UPROPERTY(EditDefaultsOnly)
-	int32 EditDefaultsOnlyInt = 9;
-
-	UPROPERTY(EditInstanceOnly)
-	int32 EditInstanceOnlyInt = 3;
+	//UPROPERTY(EditInstanceOnly)
+	//int32 EditInstanceOnlyInt = 3;
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 private:
-	UPROPERTY()
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Tank Components", meta = (AllowPrivateAccess = "true"))
 	class UCapsuleComponent* CapsuleComp;
-	UPROPERTY()
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Tank Components", meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* BaseMesh;
-	UPROPERTY()
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Tank Components", meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* TurretMesh;
-	UPROPERTY()
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Tank Components", meta = (AllowPrivateAccess = "true"))
 	USceneComponent* ProjectileSpawnPoint;
+
+	//UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "My Variables", meta = (AllowPrivateAccess = "true"))
+	//int32 VisibleAnywhereInt = 22;
+
+	//UPROPERTY(EditAnywhere, BluePrintReadOnly, Category = "My Variables", meta = (AllowPrivateAccess = "true"))
+	//int32 EditAnywhereInt = 11;
+
 
 public:	
 	// Called every frame
