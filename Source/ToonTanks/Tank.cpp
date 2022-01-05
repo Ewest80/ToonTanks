@@ -3,6 +3,7 @@
 
 #include "Tank.h"
 #include "Camera/CameraComponent.h"
+#include "DrawDebugHelpers.h"
 #include "GameFramework/SpringArmComponent.h"
 //#include "Kismet/GameplayStatics.h"
 
@@ -16,13 +17,40 @@ ATank::ATank()
 	CameraComp->SetupAttachment(SpringArmComp);
 }
 
-
 // Called when the game starts or when spawned
 void ATank::BeginPlay()
 {
 	Super::BeginPlay();
 
 	PlayerControllerRef = Cast<APlayerController>(GetController());
+
+}
+
+
+void ATank::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	if (PlayerControllerRef)
+	{
+		FHitResult HitResult;
+
+		PlayerControllerRef->GetHitResultUnderCursor(
+			ECollisionChannel::ECC_Visibility,
+			false,
+			HitResult
+		);
+
+		DrawDebugSphere(
+			GetWorld(),
+			HitResult.ImpactPoint,
+			20.f,
+			12,
+			FColor::Red,
+			false,
+			-1.f);
+
+	}
 }
 
 
