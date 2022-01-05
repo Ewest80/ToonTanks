@@ -17,6 +17,15 @@ ATank::ATank()
 }
 
 
+// Called when the game starts or when spawned
+void ATank::BeginPlay()
+{
+	Super::BeginPlay();
+
+	PlayerControllerRef = Cast<APlayerController>(GetController());
+}
+
+
 void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
