@@ -25,6 +25,12 @@ ABasePawn::ABasePawn()
 }
 
 
+void ABasePawn::HandleDestruction()
+{
+	// TODO: Visual / Sound effects
+}
+
+
 void ABasePawn::RotateTurret(FVector LookAtTarget)
 {
 	FVector ToTarget = LookAtTarget - TurretMesh->GetComponentLocation();
@@ -35,6 +41,7 @@ void ABasePawn::RotateTurret(FVector LookAtTarget)
 
 	TurretMesh->SetWorldRotation(InterRotation);
 }
+
 
 void ABasePawn::Fire()
 {
