@@ -17,8 +17,8 @@ AProjectile::AProjectile()
 	RootComponent = ProjectileMesh;
 
 	ProjectileMov = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Projectile Movement"));
-	ProjectileMov->InitialSpeed = 100.f;
-	ProjectileMov->MaxSpeed = 500.f;
+	ProjectileMov->InitialSpeed = 2000.f;
+	ProjectileMov->MaxSpeed = 2000.f;
 
 	SmokeParticles = CreateDefaultSubobject<UParticleSystemComponent>(TEXT("Particle System"));
 	SmokeParticles->SetupAttachment(RootComponent);
@@ -46,15 +46,15 @@ void AProjectile::Tick(float DeltaTime)
 
 void AProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
-	auto MyOwner = GetOwner();
+	AActor* MyOwner = GetOwner();
 	if (MyOwner == nullptr)
 	{
 		Destroy();
 		return;
 	}
 
-	auto MyOwnerInstigator = MyOwner->GetInstigatorController();
-	auto DamageTypeClass = UDamageType::StaticClass();
+	AController* MyOwnerInstigator = MyOwner->GetInstigatorController();
+	UClass* DamageTypeClass = UDamageType::StaticClass();
 
 	if (OtherActor && OtherActor != this && OtherActor != MyOwner)
 	{
