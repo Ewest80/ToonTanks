@@ -4,6 +4,7 @@
 #include "Projectile.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "Particles/ParticleSystemComponent.h"
 
 // Sets default values
 AProjectile::AProjectile()
@@ -17,6 +18,9 @@ AProjectile::AProjectile()
 	ProjectileMov = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Projectile Movement"));
 	ProjectileMov->InitialSpeed = 100.f;
 	ProjectileMov->MaxSpeed = 500.f;
+
+	SmokeParticles = CreateDefaultSubobject<UParticleSystemComponent>(TEXT("Particle System"));
+	SmokeParticles->SetupAttachment(RootComponent);
 }
 
 // Called when the game starts or when spawned

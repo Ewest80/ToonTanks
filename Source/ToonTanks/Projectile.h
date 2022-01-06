@@ -38,4 +38,7 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	UParticleSystem* HitParticles;
+
+	UPROPERTY(VisibleAnywhere)
+	class UParticleSystemComponent* SmokeParticles;
 };
