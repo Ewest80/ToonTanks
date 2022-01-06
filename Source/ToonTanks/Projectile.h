@@ -41,4 +41,10 @@ private:
 
 	UPROPERTY(VisibleAnywhere)
 	class UParticleSystemComponent* SmokeParticles;
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	class USoundBase* LaunchSound;
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	USoundBase* HitSound;
 };
